@@ -1,0 +1,22 @@
+{
+  "name": "onmd-onmd",
+  "version": "0.0.1",
+  "description": "An onm data model and transform routine for programmatically generating onm data models.",
+  "main": "onmd-onmd.js",
+  "scripts": {
+    "test": "mocha -R spec test/test-main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Encapsule/onmd-onmd.git"
+  },
+  "keywords": [
+    "onm"
+  ],
+  "author": "ChrisRus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Encapsule/onmd-onmd/issues"
+  },
+  "homepage": "https://github.com/Encapsule/onmd-onmd"
+}

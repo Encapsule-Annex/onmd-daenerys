@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/Encapsule/onmd-onmd/issues"
   },
-  "homepage": "https://github.com/Encapsule/onmd-onmd"
+  "homepage": "https://github.com/Encapsule/onmd-onmd",
+  "devDependencies": {
+    "onm": "^0.1.24",
+    "mocha": "^1.21.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-mocha-test": "^0.11.0"
+  }
 }

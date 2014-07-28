@@ -37,7 +37,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
  */
 
 (function() {
-  var littleDragon, namespaceMetaProperties, namespaceProperties, namespaceProperty, semanticBindings, uuid;
+  var daenerys, namespaceMetaProperties, namespaceProperties, namespaceProperty, semanticBindings, uuid;
 
   uuid = require('node-uuid');
 
@@ -165,9 +165,9 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
     }
   };
 
-  littleDragon = {
+  daenerys = {
     namespaceType: "root",
-    jsonTag: "littleDragon",
+    jsonTag: "daenerys",
     ____label: "onm Data Model Editor",
     ____description: "onm data model declaration editor.",
     subNamespaces: [
@@ -290,7 +290,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
                     jsonTag: "namespaces",
                     ____label: "Namespaces",
                     ____description: "Subnamespace collection.",
-                    componentArchetypePath: "littleDragon.dragonEggs.dragonEgg.namespaces.namespace"
+                    componentArchetypePath: "daenerys.dragonEggs.dragonEgg.namespaces.namespace"
                   }
                 ]
               }
@@ -345,6 +345,6 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
     }
   };
 
-  module.exports = littleDragon;
+  module.exports = daenerys;
 
 }).call(this);

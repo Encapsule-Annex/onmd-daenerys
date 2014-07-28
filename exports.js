@@ -1,5 +1,5 @@
 module.exports = {
 
-    littleDragon:  require('./dist/onmd-onmd.js')
+    daenerys:  require('./dist/daenerys.js')
 
 };

@@ -152,9 +152,9 @@ semanticBindings =
 
 
 
-littleDragon = {
+daenerys = {
     namespaceType: "root"
-    jsonTag: "littleDragon"
+    jsonTag: "daenerys"
     ____label: "onm Data Model Editor"
     ____description: "onm data model declaration editor."
 
@@ -258,7 +258,7 @@ littleDragon = {
                                     jsonTag: "namespaces"
                                     ____label: "Namespaces"
                                     ____description: "Subnamespace collection."
-                                    componentArchetypePath: "littleDragon.dragonEggs.dragonEgg.namespaces.namespace"
+                                    componentArchetypePath: "daenerys.dragonEggs.dragonEgg.namespaces.namespace"
                                 }
                             ]
                         } # subnamespaceDeclaration
@@ -306,4 +306,4 @@ littleDragon = {
 
 }
 
-module.exports = littleDragon
+module.exports = daenerys

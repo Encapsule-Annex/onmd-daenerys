@@ -7,7 +7,7 @@ module.exports = (grunt) ->
         coffee:
             compile:
                 files:
-                    'dist/onmd-onmd.js': 'src/onmd-onmd.coffee'
+                    'dist/daenerys.js': 'src/daenerys.coffee'
                     'dist/onmd-onmd-host.js': 'src/onmd-onmd-host.coffee'
                     'dist/dragon-egg-compiler.js': 'src/dragon-egg-compiler.coffee'
 

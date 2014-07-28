@@ -18,17 +18,17 @@ describe("onmd-onmd data model tests", function() {
         assert.isObject(modelDeclarationModuleExports);
     });
 
-    it("module.exports.littleDraggon should be defined", function() {
-        assert.isDefined(modelDeclarationModuleExports.littleDragon);
-        assert.isObject(modelDeclarationModuleExports.littleDragon);
+    it("module.exports.daenerys should be defined", function() {
+        assert.isDefined(modelDeclarationModuleExports.daenerys);
+        assert.isObject(modelDeclarationModuleExports.daenerys);
 
     });
 
-    describe("littleDragon data model instantiation test", function() {
+    describe("'daenerys' data model instantiation test", function() {
         var onmModel = null
 
         before(function() {
-            onmModel = new onm.Model(modelDeclarationModuleExports.littleDragon);
+            onmModel = new onm.Model(modelDeclarationModuleExports.daenerys);
         });
 
         it("onm.Model should have been constructed without error", function() {

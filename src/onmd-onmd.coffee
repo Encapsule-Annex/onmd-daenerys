@@ -39,19 +39,10 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
 #
 #
 
-namespaceEncapsule = Encapsule? and Encapsule or @Encapsule = {}
-Encapsule.code = Encapsule.code? and Encapsule.code or @Encapsule.code = {}
-Encapsule.code.lib = Encapsule.code.lib? and Encapsule.code.lib or @Encapsule.code.lib = {}
-Encapsule.code.lib.onm = Encapsule.code.lib.onm? and Encapsule.code.lib.onm or @Encapsule.code.lib.onm = {}
+uuid = require('node-uuid')
 
-ONMjs = Encapsule.code.lib.onm
-ONMjs.dataModels = ONMjs.dataModels? and ONMjs.dataModels or ONMjs.dataModels = {}
 
-ONMjs.dataModels.implementation = ONMjs.dataModels.implementation? and ONMjs.dataModels.implementation or ONMjs.dataModels.implementation = {}
-
-ONMjs.dataModels.implementation.selfDeclaration = {}
-
-ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties =
+namespaceMetaProperties =
     namespaceType: "extensionPoint"
     jsonTag: "metaProperties"
     ____label: "Meta-Properties"
@@ -79,7 +70,7 @@ ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties =
                     ____description: "The default value to be assigned new instances this meta-property."
                     defaultValue: ""
 
-ONMjs.dataModels.implementation.selfDeclaration.namespaceProperty =
+namespaceProperty =
     namespaceType: "component"
     jsonTag: "property"
     ____label: "Property"
@@ -102,17 +93,20 @@ ONMjs.dataModels.implementation.selfDeclaration.namespaceProperty =
                 defaultValue: ""
             ____type:
                 ____type: "string"
-                ____description: "A flag leveraged by ONMjs observers to discriminate the type of the mutable property."
+                ____description: "A flag leveraged by onm observers to discriminate the type of the mutable property."
                 defaultValue: ""
             ____description:
                 ____type: "string"
                 ____description: "A human-friendly string explaining what this mutable property is used for."
                 defaultValue: ""
     subNamespaces: [
-        ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties        
+        namespaceMetaProperties        
     ]
 
-ONMjs.dataModels.implementation.selfDeclaration.namespaceProperties =
+
+
+
+namespaceProperties =
     namespaceType: "child"
     jsonTag: "properties"
     ____label: "Namespace Properties"
@@ -123,55 +117,58 @@ ONMjs.dataModels.implementation.selfDeclaration.namespaceProperties =
             jsonTag: "userImmutable"
             ____label: "Immutable Properties"
             ____description: "User immutable namespace properties."
-            componentArchetype: ONMjs.dataModels.implementation.selfDeclaration.namespaceProperty 
+            componentArchetype: namespaceProperty 
         }
         {
             namespaceType: "extensionPoint"
             jsonTag: "userMutable"
             ____label: "Mutable Properties"
             ____description: "User mutable namespace properties."
-            componentArchetype: ONMjs.dataModels.implementation.selfDeclaration.namespaceProperty 
+            componentArchetype: namespaceProperty 
 
         }
     ]
 
-ONMjs.dataModels.implementation.selfDeclaration.semanticBindings =
+
+
+semanticBindings =
     namespaceType: "child"
     jsonTag: "semanticBindings"
     ____label: "Semantic Bindings"
-    ____description: "Semantic bindings control ONMjs behavior at runtime by leveraging either built-in library functionality, or callback functions you add to your data model declaration object manually."
+    ____description: "Semantic bindings control onm behavior at runtime by leveraging either built-in library functionality, or callback functions you add to your data model declaration object manually."
     namespaceProperties:
         userMutable:
             componentKeyGenerator:
                 defaultValue: "internalLuid"
                 ____type: "enum"
-                ____description: "A flag that indicates to ONMjs how keys for new components are to be generated."
+                ____description: "A flag that indicates to onm how keys for new components are to be generated."
                 ____options: [ "disabled", "internalLuid", "internalUuid", "external" ]
             namespaceVersioning:
                 defaultValue: "disabled"
                 ____type: "enum"
-                ____description: "A flag that indicated to ONMjs if and how namespaces will be versioned."
+                ____description: "A flag that indicated to onm if and how namespaces will be versioned."
                 ____options: [ "disabled", "internalSimple", "internalAdvanced", "external" ]
 
 
 
-ONMjs.dataModels.selfDeclaration = {
+
+littleDragon = {
     namespaceType: "root"
     jsonTag: "littleDragon"
-    ____label: "ONMjs Data Model Editor"
-    ____description: "ONMjs data model declaration editor."
+    ____label: "onm Data Model Editor"
+    ____description: "onm data model declaration editor."
 
     subNamespaces: [   
         {
             namespaceType: "extensionPoint"
             jsonTag: "dragonEggs"
-            ____label: "ONMjs Data Models"
-            ____description: "ONMjs data model declaration collection."
+            ____label: "onm Data Models"
+            ____description: "onm data model declaration collection."
             componentArchetype: {
                 namespaceType: "component"
                 jsonTag: "dragonEgg"
-                ____label: "ONMjs Data Model"
-                ____description: "ONMjs data model declaration."
+                ____label: "onm Data Model"
+                ____description: "onm data model declaration."
                 ____getLabelVariant: "jsonTagAndNamespaceType"
 
                 namespaceProperties: 
@@ -191,7 +188,7 @@ ONMjs.dataModels.selfDeclaration = {
                         namespaceType:
                             defaultValue: "root"
                             ____type: "enum"
-                            ____description: "A flag indicating to ONMjs the type of namespace you're declaring."
+                            ____description: "A flag indicating to onm the type of namespace you're declaring."
                     userMutable:
                         jsonTag:
                             ____type: "JSON tag string"
@@ -199,16 +196,16 @@ ONMjs.dataModels.selfDeclaration = {
                             defaultValue: ""
                         ____label:
                             ____type: "String"
-                            ____description: "A human-friendly label used by ONMjs observers."
+                            ____description: "A human-friendly label used by onm observers."
                             defaultValue: ""
                         ____description:
                             ____description: "A human-friendly description of this mutable property."
                             ____type: "String"
                             defaultValue: ""
                 subNamespaces: [
-                    ONMjs.dataModels.implementation.selfDeclaration.namespaceProperties 
-                    ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties 
-                    ONMjs.dataModels.implementation.selfDeclaration.semanticBindings
+                    namespaceProperties 
+                    namespaceMetaProperties 
+                    semanticBindings
                     {
                         namespaceType: "extensionPoint"
                         jsonTag: "namespaces"
@@ -218,7 +215,7 @@ ONMjs.dataModels.selfDeclaration = {
                             namespaceType: "component"
                             jsonTag: "namespace"
                             ____label: "Namespace"
-                            ____description: "ONMjs component namespace declaration."
+                            ____description: "onm component namespace declaration."
                             ____getLabelVariant: "jsonTagAndNamespaceType"
                             namespaceProperties: 
                                 userImmutable:
@@ -239,23 +236,23 @@ ONMjs.dataModels.selfDeclaration = {
                                         defaultValue: "invalid"
                                         ____type: "enum"
                                         ____options: [ "child", "extensionPoint", "component" ]
-                                        ____description: "A flag indicating to ONMjs the type of namespace you're declaring."
+                                        ____description: "A flag indicating to onm the type of namespace you're declaring."
                                     jsonTag:
                                         ____type: "JSON tag string"
                                         ____description: "The Javascript/JSON name to be used for this namespace."
-                                        ____description: "A flag indicating to ONMjs the type of namespace you're declaring."
+                                        ____description: "A flag indicating to onm the type of namespace you're declaring."
                                         defaultValue: ""
                                     ____label:
                                         ____type: "String"
-                                        ____description: "A human-friendly label used by ONMjs observers."
+                                        ____description: "A human-friendly label used by onm observers."
                                         defaultValue: ""
                                     ____description:
                                         ____type: "String"
                                         ____description: "A human-friendly description of this mutable property."
                                         defaultValue: ""
                             subNamespaces: [
-                                ONMjs.dataModels.implementation.selfDeclaration.namespaceProperties 
-                                ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties 
+                                namespaceProperties 
+                                namespaceMetaProperties 
                                 {
                                     namespaceType: "extensionPoint"
                                     jsonTag: "namespaces"
@@ -308,3 +305,5 @@ ONMjs.dataModels.selfDeclaration = {
                 throw "Failed in getLabel: #{exception}"
 
 }
+
+module.exports = littleDragon

@@ -19,7 +19,7 @@ module.exports = (grunt) ->
         mochaTest:
             options:
                 reporter: 'spec'
-            src: [ 'test/test-onm.js' ]
+            src: [ 'test/test-main.js' ]
 
         clean: [ 'dist' ]
 

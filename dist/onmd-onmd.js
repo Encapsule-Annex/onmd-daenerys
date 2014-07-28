@@ -4,7 +4,7 @@
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Encapsule Project
+Copyright (c) 2014 Encapsule Project
   
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -37,25 +37,11 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
  */
 
 (function() {
-  var ONMjs, namespaceEncapsule;
+  var littleDragon, namespaceMetaProperties, namespaceProperties, namespaceProperty, semanticBindings, uuid;
 
-  namespaceEncapsule = (typeof Encapsule !== "undefined" && Encapsule !== null) && Encapsule || (this.Encapsule = {});
+  uuid = require('node-uuid');
 
-  Encapsule.code = (Encapsule.code != null) && Encapsule.code || (this.Encapsule.code = {});
-
-  Encapsule.code.lib = (Encapsule.code.lib != null) && Encapsule.code.lib || (this.Encapsule.code.lib = {});
-
-  Encapsule.code.lib.onm = (Encapsule.code.lib.onm != null) && Encapsule.code.lib.onm || (this.Encapsule.code.lib.onm = {});
-
-  ONMjs = Encapsule.code.lib.onm;
-
-  ONMjs.dataModels = (ONMjs.dataModels != null) && ONMjs.dataModels || (ONMjs.dataModels = {});
-
-  ONMjs.dataModels.implementation = (ONMjs.dataModels.implementation != null) && ONMjs.dataModels.implementation || (ONMjs.dataModels.implementation = {});
-
-  ONMjs.dataModels.implementation.selfDeclaration = {};
-
-  ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties = {
+  namespaceMetaProperties = {
     namespaceType: "extensionPoint",
     jsonTag: "metaProperties",
     ____label: "Meta-Properties",
@@ -92,7 +78,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
     }
   };
 
-  ONMjs.dataModels.implementation.selfDeclaration.namespaceProperty = {
+  namespaceProperty = {
     namespaceType: "component",
     jsonTag: "property",
     ____label: "Property",
@@ -121,7 +107,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
         },
         ____type: {
           ____type: "string",
-          ____description: "A flag leveraged by ONMjs observers to discriminate the type of the mutable property.",
+          ____description: "A flag leveraged by onm observers to discriminate the type of the mutable property.",
           defaultValue: ""
         },
         ____description: {
@@ -131,10 +117,10 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
         }
       }
     },
-    subNamespaces: [ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties]
+    subNamespaces: [namespaceMetaProperties]
   };
 
-  ONMjs.dataModels.implementation.selfDeclaration.namespaceProperties = {
+  namespaceProperties = {
     namespaceType: "child",
     jsonTag: "properties",
     ____label: "Namespace Properties",
@@ -145,56 +131,56 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
         jsonTag: "userImmutable",
         ____label: "Immutable Properties",
         ____description: "User immutable namespace properties.",
-        componentArchetype: ONMjs.dataModels.implementation.selfDeclaration.namespaceProperty
+        componentArchetype: namespaceProperty
       }, {
         namespaceType: "extensionPoint",
         jsonTag: "userMutable",
         ____label: "Mutable Properties",
         ____description: "User mutable namespace properties.",
-        componentArchetype: ONMjs.dataModels.implementation.selfDeclaration.namespaceProperty
+        componentArchetype: namespaceProperty
       }
     ]
   };
 
-  ONMjs.dataModels.implementation.selfDeclaration.semanticBindings = {
+  semanticBindings = {
     namespaceType: "child",
     jsonTag: "semanticBindings",
     ____label: "Semantic Bindings",
-    ____description: "Semantic bindings control ONMjs behavior at runtime by leveraging either built-in library functionality, or callback functions you add to your data model declaration object manually.",
+    ____description: "Semantic bindings control onm behavior at runtime by leveraging either built-in library functionality, or callback functions you add to your data model declaration object manually.",
     namespaceProperties: {
       userMutable: {
         componentKeyGenerator: {
           defaultValue: "internalLuid",
           ____type: "enum",
-          ____description: "A flag that indicates to ONMjs how keys for new components are to be generated.",
+          ____description: "A flag that indicates to onm how keys for new components are to be generated.",
           ____options: ["disabled", "internalLuid", "internalUuid", "external"]
         },
         namespaceVersioning: {
           defaultValue: "disabled",
           ____type: "enum",
-          ____description: "A flag that indicated to ONMjs if and how namespaces will be versioned.",
+          ____description: "A flag that indicated to onm if and how namespaces will be versioned.",
           ____options: ["disabled", "internalSimple", "internalAdvanced", "external"]
         }
       }
     }
   };
 
-  ONMjs.dataModels.selfDeclaration = {
+  littleDragon = {
     namespaceType: "root",
     jsonTag: "littleDragon",
-    ____label: "ONMjs Data Model Editor",
-    ____description: "ONMjs data model declaration editor.",
+    ____label: "onm Data Model Editor",
+    ____description: "onm data model declaration editor.",
     subNamespaces: [
       {
         namespaceType: "extensionPoint",
         jsonTag: "dragonEggs",
-        ____label: "ONMjs Data Models",
-        ____description: "ONMjs data model declaration collection.",
+        ____label: "onm Data Models",
+        ____description: "onm data model declaration collection.",
         componentArchetype: {
           namespaceType: "component",
           jsonTag: "dragonEgg",
-          ____label: "ONMjs Data Model",
-          ____description: "ONMjs data model declaration.",
+          ____label: "onm Data Model",
+          ____description: "onm data model declaration.",
           ____getLabelVariant: "jsonTagAndNamespaceType",
           namespaceProperties: {
             userImmutable: {
@@ -218,7 +204,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
               namespaceType: {
                 defaultValue: "root",
                 ____type: "enum",
-                ____description: "A flag indicating to ONMjs the type of namespace you're declaring."
+                ____description: "A flag indicating to onm the type of namespace you're declaring."
               }
             },
             userMutable: {
@@ -229,7 +215,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
               },
               ____label: {
                 ____type: "String",
-                ____description: "A human-friendly label used by ONMjs observers.",
+                ____description: "A human-friendly label used by onm observers.",
                 defaultValue: ""
               },
               ____description: {
@@ -240,7 +226,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
             }
           },
           subNamespaces: [
-            ONMjs.dataModels.implementation.selfDeclaration.namespaceProperties, ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties, ONMjs.dataModels.implementation.selfDeclaration.semanticBindings, {
+            namespaceProperties, namespaceMetaProperties, semanticBindings, {
               namespaceType: "extensionPoint",
               jsonTag: "namespaces",
               ____label: "Namespaces",
@@ -249,7 +235,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
                 namespaceType: "component",
                 jsonTag: "namespace",
                 ____label: "Namespace",
-                ____description: "ONMjs component namespace declaration.",
+                ____description: "onm component namespace declaration.",
                 ____getLabelVariant: "jsonTagAndNamespaceType",
                 namespaceProperties: {
                   userImmutable: {
@@ -278,17 +264,17 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
                       defaultValue: "invalid",
                       ____type: "enum",
                       ____options: ["child", "extensionPoint", "component"],
-                      ____description: "A flag indicating to ONMjs the type of namespace you're declaring."
+                      ____description: "A flag indicating to onm the type of namespace you're declaring."
                     },
                     jsonTag: {
                       ____type: "JSON tag string",
                       ____description: "The Javascript/JSON name to be used for this namespace.",
-                      ____description: "A flag indicating to ONMjs the type of namespace you're declaring.",
+                      ____description: "A flag indicating to onm the type of namespace you're declaring.",
                       defaultValue: ""
                     },
                     ____label: {
                       ____type: "String",
-                      ____description: "A human-friendly label used by ONMjs observers.",
+                      ____description: "A human-friendly label used by onm observers.",
                       defaultValue: ""
                     },
                     ____description: {
@@ -299,7 +285,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
                   }
                 },
                 subNamespaces: [
-                  ONMjs.dataModels.implementation.selfDeclaration.namespaceProperties, ONMjs.dataModels.implementation.selfDeclaration.namespaceMetaProperties, {
+                  namespaceProperties, namespaceMetaProperties, {
                     namespaceType: "extensionPoint",
                     jsonTag: "namespaces",
                     ____label: "Namespaces",
@@ -358,5 +344,7 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
       }
     }
   };
+
+  module.exports = littleDragon;
 
 }).call(this);

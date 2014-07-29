@@ -168,8 +168,8 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
   daenerys = {
     namespaceType: "root",
     jsonTag: "daenerys",
-    ____label: "onm Data Model Editor",
-    ____description: "onm data model declaration editor.",
+    ____label: "Daenerys Data Model",
+    ____description: "Daenerys data model for building onm data model declarations.",
     subNamespaces: [
       {
         namespaceType: "extensionPoint",

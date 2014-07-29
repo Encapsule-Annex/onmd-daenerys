@@ -155,8 +155,8 @@ semanticBindings =
 daenerys = {
     namespaceType: "root"
     jsonTag: "daenerys"
-    ____label: "onm Data Model Editor"
-    ____description: "onm data model declaration editor."
+    ____label: "Daenerys Data Model"
+    ____description: "Daenerys data model for building onm data model declarations."
 
     subNamespaces: [   
         {

@@ -152,10 +152,6 @@ compileComponent = (store_, address_, parentDataReference_) ->
 
 
 
-
-
-
-
 compileDragonEgg = (store_, address_) ->
     try
         dataModelDeclaration = {}
@@ -169,10 +165,6 @@ compileDragonEgg = (store_, address_) ->
         throw new Error("pyre.compileDragonEgg exception: " + exception_.message)
 
 
-   
-
-
-
 
 module.exports = {
     # API
@@ -181,9 +173,4 @@ module.exports = {
     compileComponent: compileComponent,
     copyProperty: copyProperty
 };
-
-
-
-
-
 

@@ -1,6 +1,6 @@
 {
-  "name": "onmd-onmd",
-  "version": "0.0.1",
+  "name": "onmd-daenerys",
+  "version": "0.0.2",
   "description": "An onm data model and transform routine for programmatically generating onm data models.",
   "main": "exports.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Encapsule/onmd-onmd.git"
+    "url": "git://github.com/Encapsule/onmd-daenerys.git"
   },
   "keywords": [
     "onm"
@@ -16,9 +16,9 @@
   "author": "ChrisRus",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Encapsule/onmd-onmd/issues"
+    "url": "https://github.com/Encapsule/onmd-daenerys/issues"
   },
-  "homepage": "https://github.com/Encapsule/onmd-onmd",
+  "homepage": "https://github.com/Encapsule/onmd-daenerys",
   "devDependencies": {
     "onm": "^0.1.24",
     "grunt": "^0.4.5",

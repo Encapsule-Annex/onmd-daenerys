@@ -6,29 +6,33 @@ var should = require('chai').should;
 var uuid = require('node-uuid');
 var onm = require('onm');
 
-describe("onmd-onmd data model tests", function() {
-    var modelDeclarationModuleExports = null;
+describe("onmd-daenerys data model tests", function() {
+    var moduleExports = null;
 
     before(function() {
-        modelDeclarationModuleExports = require('../exports');
+        moduleExports = require('../exports')
     });
 
     it("module.exports should be defined", function() {
-        assert.isDefined(modelDeclarationModuleExports);
-        assert.isObject(modelDeclarationModuleExports);
+        assert.isDefined(moduleExports);
+        assert.isObject(moduleExports);
     });
 
     it("module.exports.daenerys should be defined", function() {
-        assert.isDefined(modelDeclarationModuleExports.daenerys);
-        assert.isObject(modelDeclarationModuleExports.daenerys);
+        assert.isDefined(moduleExports.daenerysDataModelDeclaration);
+        assert.isObject(moduleExports.daenerysDataModelDeclaration);
 
     });
 
     describe("'daenerys' data model instantiation test", function() {
-        var onmModel = null
+        var onmModel = null;
 
         before(function() {
-            onmModel = new onm.Model(modelDeclarationModuleExports.daenerys);
+            onmModel = new onm.Model(moduleExports.daenerysDataModelDeclaration);
+            console.log(JSON.stringify(onmModel.implementation.objectModelDeclaration, undefined, 4));
+            for (var schemaPath in onmModel.implementation.objectModelPathMap) {
+                console.log(schemaPath);
+            }
         });
 
         it("onm.Model should have been constructed without error", function() {

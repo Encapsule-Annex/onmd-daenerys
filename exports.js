@@ -1,5 +1,6 @@
 module.exports = {
 
-    daenerys:  require('./dist/daenerys.js')
+    daenerysDataModelDeclaration:  require('./dist/daenerys'),
+    pyre: require('./dist/pyre')
 
 };

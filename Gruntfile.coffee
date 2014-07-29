@@ -8,8 +8,7 @@ module.exports = (grunt) ->
             compile:
                 files:
                     'dist/daenerys.js': 'src/daenerys.coffee'
-                    'dist/onmd-onmd-host.js': 'src/onmd-onmd-host.coffee'
-                    'dist/dragon-egg-compiler.js': 'src/dragon-egg-compiler.coffee'
+                    'dist/pyre.js': 'src/pyre.coffee'
 
         jshint:
             options: {}

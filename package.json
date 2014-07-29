@@ -1,6 +1,6 @@
 {
   "name": "onmd-daenerys",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An onm data model and transform routine for programmatically generating onm data models.",
   "main": "exports.js",
   "scripts": {

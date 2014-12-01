@@ -5,6 +5,7 @@ var should = require('chai').should;
 
 var uuid = require('node-uuid');
 var onm = require('onm');
+var validateDataModelDeclaration = require('onm-data-model-tests').validateDataModelDeclaration;
 
 describe("onmd-daenerys data model tests", function() {
     var moduleExports = null;
@@ -28,6 +29,7 @@ describe("onmd-daenerys data model tests", function() {
         var onmModel = null;
 
         before(function() {
+            validateDataModelDeclaration(moduleExports.daenerysDataModelDeclaration);
             onmModel = new onm.Model(moduleExports.daenerysDataModelDeclaration);
             console.log(JSON.stringify(onmModel.implementation.objectModelDeclaration, undefined, 4));
             for (var schemaPath in onmModel.implementation.objectModelPathMap) {

@@ -300,20 +300,8 @@ BLOG: http://blog.encapsule.org TWITTER: https://twitter.com/Encapsule
       }
     ],
     semanticBindings: {
-      setUniqueKey: function(data_) {
-        return data_.uuid = uuid.v4();
-      },
-      getUniqueKey: function(data_) {
-        return data_.uuid;
-      },
-      update: function(data_) {
-        if (data_.revision != null) {
-          data_.revision++;
-        }
-        if (data_.uuidRevision != null) {
-          return data_.uuidRevision = uuid.v4();
-        }
-      },
+      namespaceVersioning: 'internalAdvanced',
+      componentKeyGenerator: 'internalUuid',
       getLabel: function(data_, address_) {
         var defaultLabel, exception, model;
         try {

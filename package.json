@@ -1,6 +1,6 @@
 {
   "name": "onmd-daenerys",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "An onm data model and transform routine for programmatically generating onm data models.",
   "main": "exports.js",
   "scripts": {
@@ -27,7 +27,8 @@
     "grunt-mocha-test": "^0.11.0",
     "mocha": "^1.21.3",
     "chai": "^1.9.1",
-    "onm": "^0.2.5"
+    "onm": "git://github.com/Encapsule/onm#test/rc/v0.3",
+    "onm-data-model-tests": "git://github.com/Encapsule/onm-data-model-tests#test/rc/v0.1"
   },
   "dependencies": {
     "node-uuid": "^1.4.1"

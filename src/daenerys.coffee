@@ -269,13 +269,9 @@ daenerys = {
     ]
 
     semanticBindings:
-        setUniqueKey: (data_) -> data_.uuid = uuid.v4()
 
-        getUniqueKey: (data_) -> data_.uuid
-
-        update: (data_) ->
-            if data_.revision? then data_.revision++
-            if data_.uuidRevision? then data_.uuidRevision = uuid.v4()
+        namespaceVersioning: 'internalAdvanced',
+        componentKeyGenerator: 'internalUuid'
 
         getLabel: (data_, address_) ->
             try
